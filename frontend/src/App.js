@@ -59,7 +59,7 @@ class App extends Component {
   loginHandler = (event, authData) => {
     event.preventDefault();
     this.setState({ authLoading: true });
-    fetch('http://localhost:8080/auth/login', {
+    fetch(process.env.REACT_APP_API_URL + '/auth/login', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -109,7 +109,7 @@ class App extends Component {
   signupHandler = (event, authData) => {
     event.preventDefault();
     this.setState({ authLoading: true });
-    fetch('http://localhost:8080/auth/signup', {
+    fetch(process.env.REACT_APP_API_URL + '/auth/signup', {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json'

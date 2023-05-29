@@ -1,6 +1,8 @@
 .idea
 api/node_modules
 env
+.env.production
 data
 .DS_Store
 images
+kubernetes/secrets.yaml
