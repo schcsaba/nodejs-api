@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: api-deployment
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: api
@@ -15,6 +15,9 @@ spec:
       containers:
         - name: api
           image: schcsaba/kub-dep-feed-api:latest
+          volumeMounts:
+            - mountPath: "/app/images"
+              name: vultr-volume
           env:
             - name: MONGODB_USERNAME
               valueFrom:
@@ -31,3 +34,7 @@ spec:
                 secretKeyRef:
                   name: app-secrets
                   key: jwt_secret
+      volumes:
+        - name: vultr-volume
+          persistentVolumeClaim:
+            claimName: csi-pvc
